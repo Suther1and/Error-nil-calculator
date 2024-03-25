@@ -13,6 +13,7 @@
 		B1E2AA612BB1C1D600698829 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = B1E2AA602BB1C1D600698829 /* Base */; };
 		B1E2AA632BB1C1D800698829 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1E2AA622BB1C1D800698829 /* Assets.xcassets */; };
 		B1E2AA662BB1C1D800698829 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = B1E2AA652BB1C1D800698829 /* Base */; };
+		B1E2AA722BB1C22000698829 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E2AA712BB1C22000698829 /* SecondViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		B1E2AA622BB1C1D800698829 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B1E2AA652BB1C1D800698829 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B1E2AA672BB1C1D800698829 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1E2AA712BB1C22000698829 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,48 @@
 		B1E2AA582BB1C1D600698829 /* Error nil calculator */ = {
 			isa = PBXGroup;
 			children = (
+				B1E2AA6D2BB1C1F000698829 /* Application */,
+				B1E2AA702BB1C20700698829 /* SecondViewController */,
+				B1E2AA6F2BB1C20200698829 /* Main */,
+				B1E2AA6E2BB1C1F800698829 /* Resources */,
+			);
+			path = "Error nil calculator";
+			sourceTree = "<group>";
+		};
+		B1E2AA6D2BB1C1F000698829 /* Application */ = {
+			isa = PBXGroup;
+			children = (
 				B1E2AA592BB1C1D600698829 /* AppDelegate.swift */,
 				B1E2AA5B2BB1C1D600698829 /* SceneDelegate.swift */,
-				B1E2AA5D2BB1C1D600698829 /* ViewController.swift */,
-				B1E2AA5F2BB1C1D600698829 /* Main.storyboard */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		B1E2AA6E2BB1C1F800698829 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				B1E2AA622BB1C1D800698829 /* Assets.xcassets */,
 				B1E2AA642BB1C1D800698829 /* LaunchScreen.storyboard */,
 				B1E2AA672BB1C1D800698829 /* Info.plist */,
 			);
-			path = "Error nil calculator";
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B1E2AA6F2BB1C20200698829 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				B1E2AA5D2BB1C1D600698829 /* ViewController.swift */,
+				B1E2AA5F2BB1C1D600698829 /* Main.storyboard */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		B1E2AA702BB1C20700698829 /* SecondViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B1E2AA712BB1C22000698829 /* SecondViewController.swift */,
+			);
+			path = SecondViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +173,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1E2AA722BB1C22000698829 /* SecondViewController.swift in Sources */,
 				B1E2AA5E2BB1C1D600698829 /* ViewController.swift in Sources */,
 				B1E2AA5A2BB1C1D600698829 /* AppDelegate.swift in Sources */,
 				B1E2AA5C2BB1C1D600698829 /* SceneDelegate.swift in Sources */,
@@ -294,7 +330,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6KPN2LM4B7;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Error nil calculator/Info.plist";
+				INFOPLIST_FILE = "Error nil calculator/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -322,7 +358,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6KPN2LM4B7;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Error nil calculator/Info.plist";
+				INFOPLIST_FILE = "Error nil calculator/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
