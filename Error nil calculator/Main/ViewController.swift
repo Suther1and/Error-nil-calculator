@@ -7,10 +7,23 @@
 
 import UIKit
 
- 
+protocol ViewControllerDelegate{
+    func setResulLabel(text: String)
+}
     
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, ViewControllerDelegate {
+    
+    
+    
+    var delegate: ViewControllerDelegate?
+    var firstNumber: String?
+    var secondNumber: String?
+    
+    func setResulLabel(text: String) {
+        print("data recieved")
+    }
+    
+     
      
     
     lazy var resultLabel: UILabel = {
