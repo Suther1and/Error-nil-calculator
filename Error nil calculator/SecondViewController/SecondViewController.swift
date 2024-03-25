@@ -18,8 +18,7 @@ class SecondViewController: UIViewController {
     
     
     func createCalcButton(label: String, position: CGPoint, size: CGSize, action: UIAction) -> UIButton {
-         var calcButton: UIButton = {
-             
+        lazy var calcButton: UIButton = {
             let calcButton = UIButton(primaryAction: action)
             calcButton.setTitle(label, for: .normal)
             calcButton.setTitleColor(.white, for: .normal)
