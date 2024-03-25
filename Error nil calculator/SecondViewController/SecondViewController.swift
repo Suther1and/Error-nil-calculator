@@ -51,7 +51,8 @@ class SecondViewController: UIViewController {
     lazy var plusAction = UIAction { _ in
         let firstNumber = self.firstTextField.text ?? ""
         let secondNumber = self.secondTextField.text ?? ""
-        self.delegate?.setResulLabel(text: firstNumber)
+        let sum = Int(firstNumber + secondNumber)
+        self.delegate?.setResulLabel(text: "\(sum)")
         self.navigationController?.popViewController(animated: true)
     }
     lazy var minusAction = UIAction { _ in
