@@ -11,14 +11,14 @@ import UIKit
 
 
 class SecondViewController: UIViewController {
-
     
     func createCalcButton(label: String, position: CGPoint, size: CGSize, action: UIAction) -> UIButton {
-        lazy var calcButton: UIButton = {
-            let calcButton = UIButton(primaryAction: action) // сам в шоке, что додумался как добавить action
+         var calcButton: UIButton = {
+             
+            let calcButton = UIButton(primaryAction: action)
+            calcButton.setTitle(label, for: .normal)
             calcButton.frame.origin = position
             calcButton.backgroundColor = .systemBlue
-            calcButton.setTitle(label, for: .normal)
             calcButton.frame.size = size
             calcButton.layer.cornerRadius = size.width / 2
             calcButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
@@ -49,23 +49,23 @@ class SecondViewController: UIViewController {
         view.backgroundColor = .white
         title = "Ввести данные"
         
-        let plusAction = UIAction { _ in
+       
+        
+        lazy var plusAction = UIAction { _ in
+            print("plus")
+        }
+        lazy var minusAction = UIAction { _ in
             print("minus")
         }
-        let misusAction = UIAction { _ in
-            print("minus")
-        }
-        let divAction = UIAction { _ in
+        lazy var divAction = UIAction { _ in
             print("divided")
         }
-        let multiAction = UIAction { _ in
+        lazy var multiAction = UIAction { _ in
             print("multiplied")
         }
         
-        
-        
         let plusButton = createCalcButton(label: "+", position: CGPoint(x: 30, y: 340), size: CGSize(width: 65, height: 65), action: plusAction)
-        let minusButton = createCalcButton(label: "-", position: CGPoint(x: 120, y: 340), size: CGSize(width: 65, height: 65), action: misusAction)
+        let minusButton = createCalcButton(label: "-", position: CGPoint(x: 120, y: 340), size: CGSize(width: 65, height: 65), action: minusAction)
         let divButton = createCalcButton(label: "/", position: CGPoint(x: 210, y: 340), size: CGSize(width: 65, height: 65), action: divAction)
         let multiButton = createCalcButton(label: "*", position: CGPoint(x: 300, y: 340), size: CGSize(width: 65, height: 65), action: multiAction)
         let firstTextField = createTextField(position: CGRect(x: view.frame.origin.x + 20, y: 222, width: 162, height: 55), placeholder: "число 1")
