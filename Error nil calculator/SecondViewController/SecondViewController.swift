@@ -13,7 +13,7 @@ import UIKit
 class SecondViewController: UIViewController {
     
     
-   
+    var delegate: ViewControllerDelegate?
     
     
     
@@ -52,6 +52,7 @@ class SecondViewController: UIViewController {
         let firstNumber = self.firstTextField.text ?? ""
         let secondNumber = self.secondTextField.text ?? ""
         let sum = Int(firstNumber + secondNumber)
+        self.delegate?.
         self.delegate?.setResulLabel(text: "\(sum)")
         self.navigationController?.popViewController(animated: true)
     }
@@ -89,6 +90,8 @@ class SecondViewController: UIViewController {
         view.addSubview(multiButton)
         view.addSubview(firstTextField)
         view.addSubview(secondTextField)
+        
+        
     } //viewDidLoad
     
      

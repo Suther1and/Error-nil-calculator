@@ -8,20 +8,30 @@
 import UIKit
 
 protocol ViewControllerDelegate{
+    func setFirstNumber(text: String)
+    func setSecondNumber(text: String)
     func setResulLabel(text: String)
 }
     
 class ViewController: UIViewController, ViewControllerDelegate {
+    func setFirstNumber(text: String) {
+        <#code#>
+    }
     
+    func setSecondNumber(text: String) {
+        <#code#>
+    }
+    
+    func setResulLabel(text: String) {
+        print("data recieved")
+    }
     
     
     var delegate: ViewControllerDelegate?
     var firstNumber: String?
     var secondNumber: String?
     
-    func setResulLabel(text: String) {
-        print("data recieved")
-    }
+     
     
      
      
