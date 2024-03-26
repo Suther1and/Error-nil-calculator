@@ -50,7 +50,7 @@ class ViewController: UIViewController, ViewControllerDelegate {
     
     lazy var calculationLabel: UILabel = {
         let calculationLabel = UILabel()
-        calculationLabel.frame.size = CGSize(width: view.frame.width - 40, height: 56)
+        calculationLabel.frame.size = CGSize(width: view.frame.width - 40, height: 180)
         calculationLabel.center.x = view.center.x
         calculationLabel.frame.origin.y = 250
         calculationLabel.text = ""
