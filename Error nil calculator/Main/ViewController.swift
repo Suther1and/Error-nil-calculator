@@ -8,26 +8,17 @@
 import UIKit
 
 protocol ViewControllerDelegate{
-    func setFirstNumber(text: String)
-    func setSecondNumber(text: String)
     func setResulLabel(text: String)
 }
     
 class ViewController: UIViewController, ViewControllerDelegate {
-    func setFirstNumber(text: String) {
-        <#code#>
-    }
-    
-    func setSecondNumber(text: String) {
-        <#code#>
-    }
+
     
     func setResulLabel(text: String) {
-        print("data recieved")
+        calculationLabel.text = text
     }
     
     
-    var delegate: ViewControllerDelegate?
     var firstNumber: String?
     var secondNumber: String?
     
@@ -49,10 +40,11 @@ class ViewController: UIViewController, ViewControllerDelegate {
     
     lazy var calculationLabel: UILabel = {
         let calculationLabel = UILabel()
-        calculationLabel.frame.size = CGSize(width: 282, height: 56)
+        calculationLabel.frame.size = CGSize(width: view.frame.width - 40, height: 56)
         calculationLabel.center.x = view.center.x
         calculationLabel.frame.origin.y = 250
-        calculationLabel.text = "40 + 24 = 64"
+        calculationLabel.text = ""
+        calculationLabel.numberOfLines = 0
         calculationLabel.font = UIFont.systemFont(ofSize: 46)
         calculationLabel.textAlignment = .center
         return calculationLabel
@@ -60,9 +52,8 @@ class ViewController: UIViewController, ViewControllerDelegate {
     
     lazy var calculateButton: UIButton = {
         let calculateButton = UIButton(primaryAction: secondScreenTransition)
-        // ТУТ УЕЗЖАЕТ calculateButton.frame.origin.x = view.frame.origin.x
         calculateButton.frame.origin.x = 20
-        calculateButton.frame.size = CGSize(width: 350, height: 56)
+        calculateButton.frame.size = CGSize(width: view.frame.width - 40 , height: 56)
         calculateButton.frame.origin.y = 450
         calculateButton.backgroundColor = .systemBlue
         calculateButton.layer.cornerRadius = 28
@@ -73,6 +64,7 @@ class ViewController: UIViewController, ViewControllerDelegate {
     
     lazy var secondScreenTransition = UIAction { _ in
         let vc = SecondViewController()
+        vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

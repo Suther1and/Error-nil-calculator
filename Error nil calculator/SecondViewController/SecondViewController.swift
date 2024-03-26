@@ -14,11 +14,9 @@ class SecondViewController: UIViewController {
     
     
     var delegate: ViewControllerDelegate?
-    
-    
-    
-    func createCalcButton(label: String, position: CGPoint, size: CGSize, action: UIAction) -> UIButton /* вот тут недо удалить наверное */ {
-        lazy var calcButton: UIButton = {
+
+    func createCalcButton(label: String, position: CGPoint, size: CGSize, action: UIAction) -> UIButton {
+         {
             let calcButton = UIButton(primaryAction: action)
             calcButton.setTitle(label, for: .normal)
             calcButton.setTitleColor(.white, for: .normal)
@@ -29,13 +27,12 @@ class SecondViewController: UIViewController {
             calcButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
              return calcButton
         }()
-        return calcButton // и вот тут тоже
     }
     
     
      
     func createTextField(position: CGRect, placeholder: String) -> UITextField {
-        lazy var textField: UITextField = {
+         {
             let textField = UITextField()
             textField.frame = position
             textField.placeholder = placeholder
@@ -44,25 +41,57 @@ class SecondViewController: UIViewController {
             textField.leftViewMode = .always
             return textField
         }()
-        return textField
     }
     
+    lazy var firstTextField = createTextField(position: CGRect(x: view.frame.origin.x + 20, y: 222, width: 162, height: 55), placeholder: "число 1")
+    lazy var secondTextField = createTextField(position: CGRect(x: firstTextField.frame.origin.x + 192, y: 222, width: 162, height: 55), placeholder: "число 2")
+    
+    lazy var cannotDivideLabel: UILabel = {
+        let cannotDivideLabel = UILabel()
+        cannotDivideLabel.text = ""
+        cannotDivideLabel.textAlignment = .center
+        cannotDivideLabel.frame.size = CGSize(width: view.frame.width - 40, height: 112)
+        cannotDivideLabel.center.x = view.center.x
+        cannotDivideLabel.frame.origin.y = 450
+        cannotDivideLabel.font = UIFont.systemFont(ofSize: 30)
+        return cannotDivideLabel
+
+    }()
+   
+    
     lazy var plusAction = UIAction { _ in
-        let firstNumber = self.firstTextField.text ?? ""
-        let secondNumber = self.secondTextField.text ?? ""
-        let sum = Int(firstNumber + secondNumber)
-        self.delegate?.
-        self.delegate?.setResulLabel(text: "\(sum)")
+        let firstNumber = self.firstTextField.text ?? "0"
+        let secondNumber = self.secondTextField.text ?? "0"
+        let result = (Double(firstNumber) ?? 0) + (Double(secondNumber) ?? 0)
         self.navigationController?.popViewController(animated: true)
+        self.delegate?.setResulLabel(text: firstNumber + " + " + secondNumber + " = \(result)")
     }
     lazy var minusAction = UIAction { _ in
-        print("minus")
+        let firstNumber = self.firstTextField.text ?? "0"
+        let secondNumber = self.secondTextField.text ?? "0"
+        let result = (Double(firstNumber) ?? 0) - (Double(secondNumber) ?? 0)
+        self.navigationController?.popViewController(animated: true)
+        self.delegate?.setResulLabel(text: firstNumber + " - " + secondNumber + " = \(result)")
     }
     lazy var divAction = UIAction { _ in
-        print("divided")
+        let firstNumber = self.firstTextField.text ?? "0"
+        let secondNumber = self.secondTextField.text ?? "0"
+        if Double(secondNumber) == 0 {
+            self.cannotDivideLabel.text = "На 0 делить нельзя!"
+        }else{
+            let result = (Double(firstNumber) ?? 0) / (Double(secondNumber) ?? 0)
+            let roundedResult = round(result * 10000) / 10000
+            self.navigationController?.popViewController(animated: true)
+            self.delegate?.setResulLabel(text: firstNumber + " / " + secondNumber + " = \(roundedResult)")
+            
+        }
     }
     lazy var multiAction = UIAction { _ in
-        print("multiplied")
+        let firstNumber = self.firstTextField.text ?? "0"
+        let secondNumber = self.secondTextField.text ?? "0"
+        let result = (Double(firstNumber) ?? 0 ) * (Double(secondNumber) ?? 0)
+        self.navigationController?.popViewController(animated: true)
+        self.delegate?.setResulLabel(text: firstNumber + " * " + secondNumber + " = \(result)")
     }
     
     
@@ -80,8 +109,7 @@ class SecondViewController: UIViewController {
         let minusButton = createCalcButton(label: "-", position: CGPoint(x: 120, y: 340), size: CGSize(width: 65, height: 65), action: minusAction)
         let divButton = createCalcButton(label: "/", position: CGPoint(x: 210, y: 340), size: CGSize(width: 65, height: 65), action: divAction)
         let multiButton = createCalcButton(label: "*", position: CGPoint(x: 300, y: 340), size: CGSize(width: 65, height: 65), action: multiAction)
-        let firstTextField = createTextField(position: CGRect(x: view.frame.origin.x + 20, y: 222, width: 162, height: 55), placeholder: "число 1")
-        let secondTextField = createTextField(position: CGRect(x: firstTextField.frame.origin.x + 192, y: 222, width: 162, height: 55), placeholder: "число 2")
+     
         
         view.addSubview(plusButton)
         view.addSubview(minusButton)
@@ -89,6 +117,7 @@ class SecondViewController: UIViewController {
         view.addSubview(multiButton)
         view.addSubview(firstTextField)
         view.addSubview(secondTextField)
+        view.addSubview(cannotDivideLabel)
         
         
     } //viewDidLoad
