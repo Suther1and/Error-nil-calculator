@@ -17,7 +17,7 @@ class SecondViewController: UIViewController {
     
     
     
-    func createCalcButton(label: String, position: CGPoint, size: CGSize, action: UIAction) -> UIButton {
+    func createCalcButton(label: String, position: CGPoint, size: CGSize, action: UIAction) -> UIButton /* вот тут недо удалить наверное */ {
         lazy var calcButton: UIButton = {
             let calcButton = UIButton(primaryAction: action)
             calcButton.setTitle(label, for: .normal)
@@ -27,9 +27,9 @@ class SecondViewController: UIViewController {
             calcButton.frame.size = size
             calcButton.layer.cornerRadius = size.width / 2
             calcButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
-             return calcButton//не совсем тут понял, нужно ли 2 return,  но без них не работает
+             return calcButton
         }()
-        return calcButton
+        return calcButton // и вот тут тоже
     }
     
     
