@@ -14,6 +14,9 @@ class SecondViewController: UIViewController {
     
     
     var delegate: ViewControllerDelegate?
+    
+    var firstNumberField: String?
+    var secondNumberField: String?
 
     func createCalcButton(label: String, position: CGPoint, size: CGSize, action: UIAction) -> UIButton {
          {
@@ -65,6 +68,8 @@ class SecondViewController: UIViewController {
         let result = (Double(firstNumber) ?? 0) + (Double(secondNumber) ?? 0)
         self.navigationController?.popViewController(animated: true)
         self.delegate?.setResulLabel(text: firstNumber + " + " + secondNumber + " = \(result)")
+        self.delegate?.getFirstNumber(firstNumberText: firstNumber)
+        self.delegate?.getSecondNumber(secondNumberText: secondNumber)
     }
     lazy var minusAction = UIAction { _ in
         let firstNumber = self.firstTextField.text ?? "0"
@@ -72,6 +77,8 @@ class SecondViewController: UIViewController {
         let result = (Double(firstNumber) ?? 0) - (Double(secondNumber) ?? 0)
         self.navigationController?.popViewController(animated: true)
         self.delegate?.setResulLabel(text: firstNumber + " - " + secondNumber + " = \(result)")
+        self.delegate?.getFirstNumber(firstNumberText: firstNumber)
+        self.delegate?.getSecondNumber(secondNumberText: secondNumber)
     }
     lazy var divAction = UIAction { _ in
         let firstNumber = self.firstTextField.text ?? "0"
@@ -83,6 +90,8 @@ class SecondViewController: UIViewController {
             let roundedResult = round(result * 10000) / 10000
             self.navigationController?.popViewController(animated: true)
             self.delegate?.setResulLabel(text: firstNumber + " / " + secondNumber + " = \(roundedResult)")
+            self.delegate?.getFirstNumber(firstNumberText: firstNumber)
+            self.delegate?.getSecondNumber(secondNumberText: secondNumber)
             
         }
     }
@@ -92,10 +101,12 @@ class SecondViewController: UIViewController {
         let result = (Double(firstNumber) ?? 0 ) * (Double(secondNumber) ?? 0)
         self.navigationController?.popViewController(animated: true)
         self.delegate?.setResulLabel(text: firstNumber + " * " + secondNumber + " = \(result)")
+        self.delegate?.getFirstNumber(firstNumberText: firstNumber)
+        self.delegate?.getSecondNumber(secondNumberText: secondNumber)
     }
     
     
-     
+    
      
     
     //MARK: - ViewDidLoad
@@ -105,6 +116,9 @@ class SecondViewController: UIViewController {
         view.backgroundColor = .white
         title = "Ввести данные"
 
+        firstTextField.text = firstNumberField
+        secondTextField.text = secondNumberField
+        
         let plusButton = createCalcButton(label: "+", position: CGPoint(x: 30, y: 340), size: CGSize(width: 65, height: 65), action: plusAction)
         let minusButton = createCalcButton(label: "-", position: CGPoint(x: 120, y: 340), size: CGSize(width: 65, height: 65), action: minusAction)
         let divButton = createCalcButton(label: "/", position: CGPoint(x: 210, y: 340), size: CGSize(width: 65, height: 65), action: divAction)

@@ -9,10 +9,20 @@ import UIKit
 
 protocol ViewControllerDelegate{
     func setResulLabel(text: String)
+    func getFirstNumber(firstNumberText: String)
+    func getSecondNumber(secondNumberText: String)
 }
     
 class ViewController: UIViewController, ViewControllerDelegate {
-
+    
+    
+    func getFirstNumber(firstNumberText: String) {
+        firstNumber = firstNumberText
+    }
+    
+    func getSecondNumber(secondNumberText: String) {
+        secondNumber = secondNumberText
+    }
     
     func setResulLabel(text: String) {
         calculationLabel.text = text
@@ -65,7 +75,11 @@ class ViewController: UIViewController, ViewControllerDelegate {
     lazy var secondScreenTransition = UIAction { _ in
         let vc = SecondViewController()
         vc.delegate = self
+        vc.firstNumberField = self.firstNumber
+        vc.secondNumberField = self.secondNumber
+        
         self.navigationController?.pushViewController(vc, animated: true)
+        
     }
     
     override func viewDidLoad() {
